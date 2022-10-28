@@ -1,9 +1,1 @@
-valores = input().split()
-
-tempo = float(valores[0])
-velocidade = float(valores[1])
-
-KM_P_L = 12
-litros = (velocidade * tempo) / KM_P_L
-
-print(f'{litros:.3f}')
+print([n**2 if n > 6 else n for n in range(10) if n % 2 == 0])
