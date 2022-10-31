@@ -1,3 +1,12 @@
-def funcao(*args, **kw):
+class Foo:
+    def hello(self):
+        print(self.__class__.__name__.lower())
 
-funcao("python", 2022, teste="teste")
+
+class Bar(Foo):
+    def hello(self):
+        return super().hello()
+
+
+bar = Bar()
+bar.hello()

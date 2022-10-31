@@ -17,18 +17,32 @@ class Ave(Animal):
         self.cor_bico = cor_bico
         super().__init__(**kw)
 
+        # sobrescreve o __str__ da classe pai
+        # def __str__(self):
+        #     return "Ave"
+
 
 class Gato(Mamifero):
     pass
 
+# classe Mixin
+class FalarMixin:
+    def falar(self):
+        return "oi estou falando"
 
-class Ornitorrinco(Mamifero, Ave):
+
+class Ornitorrinco(Mamifero, Ave, FalarMixin):
     def __init__(self, cor_bico, cor_pelo, nro_patas):
+        # print(Ornitorrinco.__mro__)
+        # ou
+        print(Ornitorrinco.mro())
+        # mro mostra a ordem de resolução dos atributos herdados (retorna nomes das classes em ordem de herança)
         super().__init__(cor_pelo=cor_pelo, cor_bico=cor_bico, nro_patas=nro_patas)
 
 
 gato = Gato(nro_patas=4, cor_pelo="Preto")
 print(gato)
 
-ornitorrinco = Ornitorrinco(nro_patas=2, cor_pelo="vermelho", cor_bico="laranja")
+ornitorrinco = Ornitorrinco(nro_patas=4, cor_pelo="vermelho", cor_bico="laranja")
 print(ornitorrinco)
+print(ornitorrinco.falar())
