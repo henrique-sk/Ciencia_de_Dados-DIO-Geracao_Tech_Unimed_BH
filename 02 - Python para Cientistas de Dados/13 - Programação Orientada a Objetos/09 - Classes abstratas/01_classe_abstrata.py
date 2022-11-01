@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod, abstractproperty
+# abc: Abstract Base Classes
 
 
 class ControleRemoto(ABC):
@@ -15,7 +16,7 @@ class ControleRemoto(ABC):
     def marca(self):
         pass
 
-
+# classes filhas são obrigadas a herdar os métodos e propriedades abstratos
 class ControleTV(ControleRemoto):
     def ligar(self):
         print("Ligando a TV...")
