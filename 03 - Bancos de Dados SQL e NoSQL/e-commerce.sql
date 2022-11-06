@@ -1,4 +1,5 @@
 create database ecommerce;
+-- drop database ecommerce;
 use ecommerce;
 
 create table customer(
@@ -40,6 +41,7 @@ create table orders(
     slipPayment boolean default false,
     -- idPayment
     constraint fk_orders_customer foreign key (idOrderCustomer) references customer(idCustomer)
+		on update cascade
 );
 
 create table stock(
@@ -78,13 +80,13 @@ create table productSeller(
 );
 
 create table productOrder(
-	idPoproduct int,
-    idPOrder int,
+	idPOproduct int,
+    idPOorder int,
     poQuantity int default 1,
     poStatus enum('available', 'out of stock') default 'available',
     primary key (idPOproduct, idPOorder),
-    constraint fk_product_seller foreign key (idPOproduct) references product(idProduct),
-    constraint fk_product_product foreign key (idPOorder) references orders(idOrder)
+    constraint fk_productorder_seller foreign key (idPOproduct) references product(idProduct),
+    constraint fk_productorder_product foreign key (idPOorder) references orders(idOrder)
 );
 
 create table stockLocation(
@@ -92,6 +94,21 @@ create table stockLocation(
     idLstock int,
     Location varchar(45) not null,
     primary key (idLproduct, idLstock),
-    constraint fk_product_seller foreign key (idLproduct) references product(idProduct),
-    constraint fk_product_product foreign key (idLstock) references orders(productSeller)
+    constraint fk_stock_location_product foreign key (idLproduct) references product(idProduct),
+    constraint fk_stock_location_stock foreign key (idLstock) references stock(IdStock)
 );
+
+create table productSupplier(
+	idPsSupplier int,
+    idPsProduct int,
+    quantity int not null,
+    primary key (idPsSupplier, idPsProduct),
+    constraint fk_product_supplier_supplier foreign key (idPsSupplier) references supplier(idSupplier),
+    constraint fk_product_supplier_prodcut foreign key (idPsProduct) references product(idProduct)
+);
+show tables;
+show databases;
+use information_schema;
+show tables;
+desc referential_constraints;
+select * from referential_constraints where constraint_schema = 'ecommerce';
