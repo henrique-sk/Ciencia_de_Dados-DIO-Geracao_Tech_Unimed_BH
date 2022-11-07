@@ -8,13 +8,15 @@ create table customer(
     Minit char(3),
     Lname varchar(20),
     CPF char(11) not null,
-    Address varchar(45),
+    Address varchar(255),
     constraint unique_cpf_customer unique (CPF)
 );
 
+alter table customer auto_increment=1;
+
 create table product(
 	idProduct int auto_increment primary key,
-    Pname varchar(15) not null,
+    Pname varchar(45) not null,
     category enum('games', 'communication', 'consoles', 'computing', 'accessories') not null,
     ratings float default 0,
     Pdescription varchar(255)
@@ -64,7 +66,7 @@ create table seller(
     TradeMark varchar(45),
     CNPJ char(15),
     CPF char(9),
-    Location varchar(45) not null,
+    Location varchar(255) not null,
     Contact char(11) not null,
     constraint unique_cnpj_seller unique(CNPJ),
     constraint unique_cpf_seller unique(CPF)
@@ -92,7 +94,7 @@ create table productOrder(
 create table stockLocation(
 	idLproduct int,
     idLstock int,
-    Location varchar(45) not null,
+    Location varchar(255) not null,
     primary key (idLproduct, idLstock),
     constraint fk_stock_location_product foreign key (idLproduct) references product(idProduct),
     constraint fk_stock_location_stock foreign key (idLstock) references stock(IdStock)
