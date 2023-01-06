@@ -1,6 +1,5 @@
 # Ciencia_de_Dados-DIO-Geracao_Tech_Unimed_BH
 
-Description.
 Este repositório é o resultado da conclusão do bootcamp Ciência de Dados Geração Tech Unimed-BH da DIO (Digital Innovation One), que teve duração de 126 horas. Documentei aqui todo o material desenvolvido durante as aulas.
 
 ## Desafios de código
